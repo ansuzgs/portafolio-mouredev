@@ -1,28 +1,29 @@
 import reflex as rx
 
 from portafolio.components.icon_button import icon_button
+from portafolio.data import Media
 from portafolio.styles.styles import Size
 
 
-def media() -> rx.Component:
+def media(data: Media) -> rx.Component:
     return rx.hstack(
         icon_button(
             "mail",
-            "url",
-            "email@email.com",
+            f"mailto:{data.email}",
+            data.email,
             True,
         ),
         icon_button(
             "file-text",
-            "url",
+            data.cv,
         ),
         icon_button(
             "github",
-            "url",
+            data.github,
         ),
         icon_button(
             "linkedin",
-            "url",
+            data.linkedin,
         ),
         spacing=Size.SMALL.value,
     )
